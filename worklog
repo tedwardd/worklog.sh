@@ -11,7 +11,7 @@ edit() {
     if [[ -f ${LOGDIRBASE}/${YYMM}/${2}.md ]]; then
         $EDITOR ${LOGDIRBASE}/${YYMM}/${2}.md
     else
-        $EDITOR ${LOGDIRBASE}/${YYMM}/${YYMMDD}
+        $EDITOR ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
     fi
 }
 
