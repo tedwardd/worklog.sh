@@ -6,11 +6,11 @@ It's hard to remember what you work on all quarter. Write it down so you don't h
 
 # Setup
 
-    1. Install `worklog` in your path
-    2. Set up a [dedicated hotkey window](https://iterm2.com/documentation-hotkey.html) in iTerm2
-    3. Edit the hotkey window profile
-        a. Settings -> Profiles -> Hotkey Window
-        b. Set the `Command` to "Custom Shell" with the value of the path to `worklog`
+1. Install `worklog` in your path
+2. Set up a [dedicated hotkey window](https://iterm2.com/documentation-hotkey.html) in iTerm2
+3. Edit the hotkey window profile
+    a. Settings -> Profiles -> Hotkey Window
+    b. Set the `Command` to "Custom Shell" with the value of the path to `worklog`
 
 If you did everything right, you can run your iTerm2 hotkey to pull up an iTerm2 window running `worklog`, prompting you for a new worklog entry.
 
