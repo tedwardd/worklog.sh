@@ -1,0 +1,35 @@
+#!/bin/bash
+
+YYMM=$(date '+%Y%m')
+YYMMDD=$(date '+%Y%m%d')
+TS=$(date '+%Y%m%d-%H%M')
+LOGDIRBASE=$HOME/worklogs
+
+test -d ${LOGDIRBASE}/${YYMM} || mkdir ${LOGDIRBASE}/${YYMM}
+
+edit() {
+    if [[ -f ${LOGDIRBASE}/${YYMM}/${2}.md ]]; then
+        $EDITOR ${LOGDIRBASE}/${YYMM}/${2}.md
+    else
+        $EDITOR ${LOGDIRBASE}/${YYMM}/${YYMMDD}
+    fi
+}
+
+show() {
+    if [[ -f ${LOGDIRBASE}/${YYMM}/${2}.md ]]; then
+        cat ${LOGDIRBASE}/${YYMM}/${2}.md
+    else
+        cat ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
+    fi
+}
+
+new() {
+    read -p "changelog: " changes
+    echo "$TS $changes" >> ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
+}
+
+if [[ -n $1 ]]; then
+    $1 $@
+else
+    new
+fi
