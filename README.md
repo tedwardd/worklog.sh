@@ -18,7 +18,7 @@ If you did everything right, you can run your iTerm2 hotkey to pull up an iTerm2
 
 ```
 Usage:
-    worklog [show|edit] [date]
+    worklog [edit|new|show] [date]
 
 Examples:
     Show today's worklog:
@@ -32,5 +32,13 @@ Examples:
 
     Edit specific worklog:
         worklog edit 20240131
-```
 
+    New entry prompt:
+        worklog new
+
+    New entry in-line:
+        worklog this is an entry
+
+    Read new entry from stdin (prepends timestamp):
+        echo "this is an entry" | worklog
+```

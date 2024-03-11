@@ -44,5 +44,6 @@ if [[ -n $1 ]]; then
 		;;
 	esac
 else
-	new
+	note=$(cat /dev/stdin)
+	echo "$TS $note" >>${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
 fi
