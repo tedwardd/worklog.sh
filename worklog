@@ -8,28 +8,41 @@ LOGDIRBASE=$HOME/worklogs
 test -d ${LOGDIRBASE}/${YYMM} || mkdir ${LOGDIRBASE}/${YYMM}
 
 edit() {
-    if [[ -f ${LOGDIRBASE}/${YYMM}/${2}.md ]]; then
-        $EDITOR ${LOGDIRBASE}/${YYMM}/${2}.md
-    else
-        $EDITOR ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
-    fi
+	if [[ -f ${LOGDIRBASE}/${YYMM}/${2}.md ]]; then
+		$EDITOR ${LOGDIRBASE}/${YYMM}/${2}.md
+	else
+		$EDITOR ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
+	fi
 }
 
 show() {
-    if [[ -f ${LOGDIRBASE}/${YYMM}/${2}.md ]]; then
-        cat ${LOGDIRBASE}/${YYMM}/${2}.md
-    else
-        cat ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
-    fi
+	if [[ -f ${LOGDIRBASE}/${YYMM}/${2}.md ]]; then
+		cat ${LOGDIRBASE}/${YYMM}/${2}.md
+	else
+		cat ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
+	fi
 }
 
 new() {
-    read -p "changelog: " changes
-    echo "$TS $changes" >> ${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
+	read -p "entry: " changes
+	echo "$TS $changes" >>${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
 }
 
 if [[ -n $1 ]]; then
-    $1 $@
+	case $1 in
+	edit)
+		edit
+		;;
+	show)
+		show
+		;;
+	new)
+		new
+		;;
+	*)
+		echo "$TS $@" >>${LOGDIRBASE}/${YYMM}/${YYMMDD}.md
+		;;
+	esac
 else
-    new
+	new
 fi
