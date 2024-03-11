@@ -1,4 +1,4 @@
-# worklogger
+# worklog.sh
 
 *Log your work, write better reviews*
 
